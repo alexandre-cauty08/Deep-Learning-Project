@@ -46,13 +46,24 @@ Cette approche nous permettra d'explorer et de perfectionner nos modèles pour a
 ### Visualisation des données
 
 Avant de débuter le projet, nous voulons visualiser la distribution des données dans leur ensemble. Cette étape nous permettra de mieux appréhender la nature des données et d'analyser comment elles se regroupent.
-# Visualisation des jeux de données
 
 <p align="center">
     <img src="img/visualisation/image_visualision_tiger.png" title="t-SNE sur les données tigre" alt="t-SNE sur les données tigre" width="100" />
     <img src="img/visualisation/image_visualisation_fox.png" alt="t-SNE sur les données renard" width="100" />
     <img src="img/visualisation/image_visualisation_elephant.png" alt="t-SNE sur les données éléphant" width="300" />
 </p>
+ <table>
+  <tr>
+    <td align="center">t-SNE sur les données tigre</td>
+    <td align="center">t-SNE sur les données renard</td>
+    <td align="center">t-SNE sur les données éléphant</td>
+  </tr>
+  <tr>
+    <img src="img/visualisation/image_visualision_tiger.png" alt="t-SNE sur les données tigre" width="300" />
+    <img src="img/visualisation/image_visualisation_fox.png" alt="t-SNE sur les données renard" width="300" />
+    <img src="img/visualisation/image_visualisation_elephant.png" alt="t-SNE sur les données éléphant" width="300" />
+  </tr>
+ </table>
 
 _Visualisation des jeux de données grâce à la technique t-SNE._
 
