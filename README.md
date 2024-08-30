@@ -1,12 +1,29 @@
 #  Implémentation Deep learning
 Dans le cadre du projet de Machine Learning, nous avons eu l’opportunité de travailler sur des algorithmes de Deep Learning. Le but étant d’obtenir un modèle pour chacun des animaux qui puissent prédire si l’image de test correspond à l’animal recherché ou pas. Une grande partie est consacrée à pouvoir générer des images, plus précisément sur les renards.
 
-## Table des Matières
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Contribuer](#contribuer)
-- [Licence](#licence)
+# Table des Matières
+
+1. [Introduction](#introduction) 
+2. [Création de baseline](#création-de-baseline)
+   1. [Visualisation des données](#visualisation-des-données)
+   2. [Les baselines](#les-baselines)
+3. [Optimisation](#optimisation)
+   1. [Baseline Améliorée Éléphant](#baseline-améliorée-éléphant)
+   2. [Baseline Améliorée Tigre](#baseline-améliorée-tigre)
+   3. [Baseline Améliorée Renard](#baseline-améliorée-renard)
+4. [ImageDataGenerator](#imagedatagenerator)
+   1. [Modèle Éléphant](#modèle-éléphant)
+   2. [Modèle Tigre](#modèle-tigre)
+   3. [Modèle Renard](#modèle-renard)
+5. [Transfer Learning](#transfer-learning)
+   1. [Modèle Éléphant](#modèle-éléphant-1)
+   2. [Modèle Tigre](#modèle-tigre-1)
+   3. [Modèle Renard](#modèle-renard-1) 
+6. [Generative Adversarial Network Fox](#generative-adversarial-network-fox)
+   1. [Prédiction sur les sorties du GAN](#prédiction-sur-les-sorties-du-gan) 
+7. [Modèle le plus complexe : contenu des sorties des CNN](#modèle-le-plus-complexe-contenu-des-sorties-des-cnn)
+8. [Conclusion](#conclusion)
+
 
 ## Introduction
 
