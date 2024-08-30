@@ -96,5 +96,24 @@ Résultats des 5 folds pour le modèle Baseline
   </tr>
  </table>
 
- 
+Moyenne d'accuracy, écart-type sur les 5 folds pour chaque jeu de données
 
+<table>
+  <tr>
+    <td align="center">Résultat tigre</td>
+    <td align="center">Résultat renard</td>
+    <td align="center">Résultat éléphant</td>
+  </tr>
+  <tr>
+    <td><img src="Baseline/elephant/baseline_acc_elephant.png" width=300 height=300/></td>
+    <td><img src="Baseline/tiger/resultats_tiger_baseline_2.png" width=300 height=300/></td>
+    <td><img src="Baseline/fox/Accuracy_bb.png" width=300 height=300/></td>
+  </tr>
+ </table>
+
+**Interprétation des données :** Dans la majorité des cas de la Figure, nous avons du surapprentissage.
+Pour les trois animaux nous rencontrons  des scénarios similaires :
+-   La validation loss augmente et la training loss diminue, le modèle apprend trop bien sur les données d’entraînement.
+-   La validation accuracy est toujours plus faible que la training accuracy, le modèle performe bien sur les données d’entraînement, mais ne généralise pas bien sur les nouvelles données. Il est en train de surapprendre les caractéristiques spécifiques de l’ensemble d’entrainement.
+
+Nous remarquons que l'écart-type moyen des jeux de données est élevé donc que les accuracy s'éloignent de celle moyenne, les résultats ne sont pas assez stables.
