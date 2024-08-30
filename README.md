@@ -41,6 +41,29 @@ Pour ce faire, notre travail se décomposera en plusieurs étapes :
 
 Cette approche nous permettra d'explorer et de perfectionner nos modèles pour atteindre des performances optimales dans l'identification des trois animaux ciblés.
 
+## Création de baseline
+
+### Visualisation des données
+
+Avant de débuter le projet, nous voulons visualiser la distribution des données dans leur ensemble. Cette étape nous permettra de mieux appréhender la nature des données et d'analyser comment elles se regroupent.
+# Visualisation des jeux de données
+
+<p align="center">
+    <img src="visualisation/image_visualision_tiger.png" alt="t-SNE sur les données tigre" width="300" />
+    <img src="visualisation/image_visualisation_fox.png" alt="t-SNE sur les données renard" width="300" />
+    <img src="visualisation/image_visualisation_elephant.png" alt="t-SNE sur les données éléphant" width="300" />
+</p>
+
+_Visualisation des jeux de données grâce à la technique t-SNE._
+
+**Que peut-on en déduire ?**
+
+On peut remarquer que pour les données 'tiger' et 'fox', il n'y a pas de séparation nette entre les deux classes. Pour ces données, il va être plus difficile pour le classifieur de différencier les images, cependant pour les données éléphant on peut remarquer que les données se distinguent plus.
+
+Les jeux de données de renard et tigre sont mélangés, on sait d'avance que le modèle va sans doute trop se concentrer sur certains patterns communs, il nous faudra ainsi mettre des couches de dropout pour éviter que le modèle se focalise trop sur certains détails.
+
+
+### Les baselines
 
 
 
