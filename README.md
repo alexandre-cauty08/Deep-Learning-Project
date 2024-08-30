@@ -54,9 +54,9 @@ Avant de débuter le projet, nous voulons visualiser la distribution des donnée
     <td align="center">t-SNE sur les données éléphant</td>
   </tr>
   <tr>
-    <img src="img/visualisation/image_visualision_tiger.png" width=270 height=480 />
-    <img src="img/visualisation/image_visualisation_fox.png" width=270 height=480/>
-    <img src="img/visualisation/image_visualisation_elephant.png" width=270 height=480 />
+    <td><img src="img/visualisation/image_visualision_tiger.png" width=300 height=300/></td>
+    <td><img src="img/visualisation/image_visualisation_fox.png" width=300 height=300/></td>
+    <td><img src="img/visualisation/image_visualisation_elephant.png" width=300 height=300/></td>
   </tr>
  </table>
 
