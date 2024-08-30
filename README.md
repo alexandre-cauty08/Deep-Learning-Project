@@ -71,5 +71,30 @@ Les jeux de données de renard et tigre sont mélangés, on sait d'avance que le
 
 ### Les baselines
 
+Nous avons donc créé la Baseline à partir des notebooks du module de Machine Learning 2, nous pouvons observer sur la Figure la structure du modèle utilisé pour chaque jeu de données. 
 
+ <table>
+  <tr>
+    <td align="center">Summary de la baseline</td>
+  </tr>
+  <tr>
+    <td><img src="Baseline/baseline_summary.png" width=300 height=300/></td>
+  </tr>
+ </table>
+
+Résultats des 5 folds pour le modèle Baseline
+  <table>
+  <tr>
+    <td align="center">Résultat tigre</td>
+    <td align="center">Résultat renard</td>
+    <td align="center">Résultat éléphant</td>
+  </tr>
+  <tr>
+    <td><img src="Baseline/elephant/baseline_elephant.png" width=300 height=300/></td>
+    <td><img src="Baseline/tiger/baseline_tiger_resultats.png" width=300 height=300/></td>
+    <td><img src="Baseline/fox/bb.png" width=300 height=300/></td>
+  </tr>
+ </table>
+
+ 
 
