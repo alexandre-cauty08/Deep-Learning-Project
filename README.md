@@ -105,9 +105,9 @@ Moyenne d'accuracy, écart-type sur les 5 folds pour chaque jeu de données
     <td align="center">Résultat éléphant</td>
   </tr>
   <tr>
-    <td><img src="Baseline/elephant/baseline_acc_elephant.png" width=150 height=150/></td>
-    <td><img src="Baseline/tiger/resultats_tiger_baseline_2.png" width=150 height=150/></td>
-    <td><img src="Baseline/fox/Accuracy_bb.png" width=150 height=150/></td>
+    <td><img src="Baseline/elephant/baseline_acc_elephant.png" width=320 height=30/></td>
+    <td><img src="Baseline/tiger/resultats_tiger_baseline_2.png" width=320 height=30/></td>
+    <td><img src="Baseline/fox/Accuracy_bb.png" width=320 height=30/></td>
   </tr>
  </table>
 
