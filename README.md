@@ -134,11 +134,6 @@ Les 5 combinaisons obtenues ont les mêmes résultats pour la fonction d'activat
 
 Nous considérons donc que la meilleure combinaison est celle égale aux combinaisons 1, 3 et 5. 
 
-\begin{figure}[!h]
-\centering
-\includegraphics[width=1\linewidth]{optimisation/elephant/best_hps.png}
-\caption{\label{fig:bst_hp_el}Combinaisons des meilleurs hyper-paramètres pour 5 folds.}
-\end{figure}
 <table>
   <tr>
     <td align="center">Combinaisons des meilleurs hyper-paramètres pour 5 folds</td>
@@ -149,3 +144,35 @@ Nous considérons donc que la meilleure combinaison est celle égale aux combina
  </table>
 
 Tout d'abord en comparant la baseline avec celle améliorée Modèle 1 du tableau) on se rend compte que la loss validation est plus basse pour celle améliorée et que le surapprentissage est nettement moins présent.
+En testant les méthodes de régularisations sur le jeu de données de l'éléphant (via la tableau), nous constatons que pour certains modèles l'accuracy a augmenté et tous les modèles présentent toujours du surapprentissage. 
+
+Les meilleurs modèles obtenus sont donc 1 et 6 (s'arrêtant grâce à l'EarlyStopping) car on ne détecte pas d'overfitting. 
+En augmentant le filtre de la couche convolution (explication dans la partie Renard qui suit) de 32 à 128 nous obtenons de meilleurs résultats pour la base améliorée sans régularisation : Accuracy moyenne 88.110 et écart type à 1.832 mais des valeurs de loss qui ne sont pas plus basses ; pour le modèle avec une couche de dropout nous avons un écart-type qui se creuse pour une accuracy similaire.
+<table>
+  <tr>
+    <td align="center">Résultats de la baseline améliorée éléphant (lr=0.001 et 5 folds)</td>
+  </tr>
+  <tr>
+    <td><img src="optimisation/baselineameliore-el.png" width=1001 height=242/></td>
+  </tr>
+ </table>
+<table>
+  <tr>
+    <td align="center">Modèle amélioré avec Kernel Regularization</td>
+     <td align="center">Modèle amélioré avec une couche de Dropout et du Kernel Regularization</td>
+  </tr>
+  <tr>
+    <td><img src="optimisation/elephant/kernel_reg_01_elephant.png" width=300 height=300/></td>
+    <td><img src="optimisation/elephant/dropout_kernel_elephant.png" width=300 height=300 ></td>
+  </tr>
+ </table>
+ 
+ ### Baseline Améliorée Tigre ###
+ Les hyperparamètres retournés par le GridSearch pour la meilleur baseline sont : Optimizer Adam, learning rate 0,001 et batch size 8.
+
+
+
+
+
+ 
+
