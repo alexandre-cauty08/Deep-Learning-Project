@@ -209,7 +209,26 @@ L’augmentation de filtres permet au modèle de se complexifier, d’améliorer
  </table>
 <table>
 
+Ce que nous pouvons entreprendre maintenant c'est la génération de données avec DataImageGenerator.
+
+
 ## ImageDataGenerator ##
+
+Pour éviter le surapprentissage, nous avons mis en place des techniques de régularisation du modèle. Cependant, malgré ces ajustements, le surapprentissage persiste, principalement en raison d'un manque de données d'entraînement. Afin de palier à ce problème, nous avons utilisé l'outil ImageDataGenerator, permettant de générer de nouvelles images à partir des données existantes (exemple sur la Figure \ref{image_generated_example}.
+Pour tous les modèles, nous avons pris les paramètres de ImageDataGenerator indiqués sur la Figure \ref{fig:paramIDG}.
+
+Les changements effectués sur les images sont divers, on peut retrouver : 
+   -   La rotation : L'image peut être pivotée d'un certain angle, soit dans le sens horaire, anti-horaire ou à des angles aléatoires.
+   -   La translation : Déplacement de l'image dans différentes directions (haut, bas, gauche, droite).
+   -   Le miroir : Réflexion horizontale ou verticale de l'image.
+   -   La déformation : Légères distorsions ou modifications de la géométrie de l'image.
+   -   Changement de luminosité, contraste ou teinte : Altération des niveaux de luminosité, du contraste ou de la teinte de l'image.
+    
+Nous avons un jeu de données relativement petit, donc le mieux serait d'envisager des transformations plus diverses pour augmenter sa taille de manière significative sans introduire de redondance. Cependant il faut s'assurer que les transformations ne perturbent pas trop les caractéristiques importantes des images. Des transformations qui altèrent trop la forme ou les traits caractéristiques des animaux pourraient rendre les données moins utiles. Pour éviter que la redondance s'installe trop et augmente le surapprentissage, nous avons décidé de générer seulement 5 images pour une image réelle.
+
+Une fois que nous avons enrichi notre jeu de données, nous l'utilisons pour évaluer si nos modèles ont présenté des améliorations.
+
+
 ### Modèle Éléphant ###
 
 En utilisant les modèles améliorés (avec ou sans régularisation) avec les données réelles et générées nous obtenons vite de l'underfitting où la courbe de loss train est toujours en train de décroître n'ayant pas atteint d'état stable, mais celle de validation augmente et s'arrête donc à cause de l'EarlyStopping au bout de de moins d'une dizaine d'epochs. En enlevant l'EarlyStopping (avec 50 epochs) on obtient du surapprentissage car la loss train se stabilise mais la validation loss ne fait qu'augmenter. 
