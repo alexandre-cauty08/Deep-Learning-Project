@@ -209,6 +209,36 @@ L’augmentation de filtres permet au modèle de se complexifier, d’améliorer
  </table>
 <table>
 
+## ImageDataGenerator ##
+### Modèle Éléphant ###
+### Modèle Tigre ###
+### Modèle Renard ###
+
+## Transfer Learning ##
+### Modèle Éléphant ###
+### Modèle Tigre ###
+### Modèle Renard ###
+
+## Generative Adversarial Network fox ##
+### Prédiction sur les sorties du GAN ###
+## Modèle le plus complexe : contenu des sorties des CNN ##
+## Conclusion ##
+Ce projet met en évidence les défis liés à la capacité de nos modèles à bien se généraliser. Nous avons eu des difficultés à obtenir des résultats satisfaisants et à assurer une bonne généralisation de nos modèles.
+
+Pour améliorer nos résultats, nous avons exploré plusieurs méthodes avancées telles que la régularisation (car le surapprentissage est omniprésent), la génération de données avec ImageDataGenerator et le transfert learning. 
+
+Globalement, nos résultats ont été satisfaisants bien que le surapprentissage persiste sur la globalité des modèles, nous avons pu trouver plusieurs modèles où la régularisation a fonctionné notamment grâce à des couches de Dropout et à du Kernel Regularization. Nous pensons qu'en introduisant davantage de diversité dans les données et en augmentant leur volume, nous pourrons obtenir de meilleurs résultats comme cela a été montré avec ImageDataµGenerator (surtout pour le renard). Les résultats obtenus avec les modèles de Transfer Learning ont des scores très satisfaisants pour tous les animaux, cependant les loss ne sont pas aussi basses que souhaités, les courbes n'ont pas les allures attendues et l'overfitting ets toujours présent.
+
+Les meilleurs modèles de ce projet :  
+   -    Elephant : Base améliorée dropout + KernelRegularization
+   -    Tigre : ImageDataGenerator 18 images générées et dropout
+   -    Renard : ImageDataGenerator 20 images générées et dropout
+
+La partie GAN a eu moins de succès étant donnée le peu de données mis à disposition pour générer des données malgré un nombre d'epochs qui nous a paru important (10 000). 
+
+Cette expérience a été très enrichissante et bénéfique à notre apprentissage dans le deep learning. Certes beaucoup de nouvelles notions ont été introduites et difficiles à utiliser. Le temps d'exécution a freiné notre avancé sur de nombreux modèles. Il aurait été intéressant de faire plus d'expériences sur les GANs, notamment en utilisant un cGAN (conditional GAN) afin de pouvoir étiqueter les images des renards (corps, tête ou encore par races de renards). 
+
+
 
 
  
