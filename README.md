@@ -115,5 +115,37 @@ Moyenne d'accuracy, écart-type sur les 5 folds pour chaque jeu de données
 Pour les trois animaux nous rencontrons  des scénarios similaires :
 -   La validation loss augmente et la training loss diminue, le modèle apprend trop bien sur les données d’entraînement.
 -   La validation accuracy est toujours plus faible que la training accuracy, le modèle performe bien sur les données d’entraînement, mais ne généralise pas bien sur les nouvelles données. Il est en train de surapprendre les caractéristiques spécifiques de l’ensemble d’entrainement.
-
 Nous remarquons que l'écart-type moyen des jeux de données est élevé donc que les accuracy s'éloignent de celle moyenne, les résultats ne sont pas assez stables.
+
+
+## Optimisation ##
+
+Tout d'abord nous recherchons maintenant la meilleure combinaison d'hyper-paramètres pour optimiser le modèle Baseline, pour ce faire nous  utilisons un random search sur plusieurs hyper-paramètres. Après avoir ciblé la meilleure combinaison avec random search, nous  utilisons un grid search pour essayer des combinaisons en prenant pour base celle trouvée précédemment avec le random search. 
+
+Nous souhaitons évaluer les hyper-paramètres suivants : la fonction d'activation d'une des couches du réseau de neurones, le batch\_size, l'optimizer et son learning_rate.
+Afin de prévenir le surapprentissage un EarlyStopping sur la loss de validation a été ajouté, grâce à cela nous pouvons arrêter le nombre d'epochs plus tôt en cas d'augmentation de validation loss. 
+
+### Baseline Améliorée Éléphant ###
+
+Pour les meilleurs hyper-paramètres nous effectuons un random search puis un grid search comme expliqué précédemment. 
+Cependant cette expérience génère les meilleurs hyper-paramètres pour un jeu de données d'entraînement et de validation précis, c'est pourquoi nous effectuons une validation croisée sur 5 folds pour faire cette expérience sur chacun des folds et ainsi obtenir 5 meilleurs hyper-paramètres. 
+
+Les 5 combinaisons obtenues ont les mêmes résultats pour la fonction d'activation et le batch_size. Pour les deux paramètres learning_rate et optimizer nous prendrons la valeur ayant la majorité, 4/5 des combinaisons avaient le même learning\_rate (égal à 0.001) et 3/5 des combinaisons optent pour l'optimizer adam (les autres ont utilisés adamax). 
+
+Nous considérons donc que la meilleure combinaison est celle égale aux combinaisons 1, 3 et 5. 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\linewidth]{optimisation/elephant/best_hps.png}
+\caption{\label{fig:bst_hp_el}Combinaisons des meilleurs hyper-paramètres pour 5 folds.}
+\end{figure}
+<table>
+  <tr>
+    <td align="center">Combinaisons des meilleurs hyper-paramètres pour 5 folds</td>
+  </tr>
+  <tr>
+    <td><img src="optimisation/elephant/best_hps.png" width=607 height=75/></td>
+  </tr>
+ </table>
+
+Tout d'abord en comparant la baseline avec celle améliorée Modèle 1 du tableau) on se rend compte que la loss validation est plus basse pour celle améliorée et que le surapprentissage est nettement moins présent.
