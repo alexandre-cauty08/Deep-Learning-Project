@@ -211,16 +211,72 @@ L’augmentation de filtres permet au modèle de se complexifier, d’améliorer
 
 ## ImageDataGenerator ##
 ### Modèle Éléphant ###
+
+En utilisant les modèles améliorés (avec ou sans régularisation) avec les données réelles et générées nous obtenons vite de l'underfitting où la courbe de loss train est toujours en train de décroître n'ayant pas atteint d'état stable, mais celle de validation augmente et s'arrête donc à cause de l'EarlyStopping au bout de de moins d'une dizaine d'epochs. En enlevant l'EarlyStopping (avec 50 epochs) on obtient du surapprentissage car la loss train se stabilise mais la validation loss ne fait qu'augmenter. 
+Le modèle 3 (du Tableau \ref{tab:elephant_generator}) utilise beaucoup plus d'images que le modèle 2 car on génère 10 données pour une donnée réelle, l'écart-type a réduit mais l'underfitting est présent. 
+Le modèle 5 utilise une taille de batch = 32 contrairement aux autres modèles (égale à 8). 
+Malgré la réduction de l'accuracy on constate la réduction du std avec les données générées, donc des folds plus stables. 
+
 ### Modèle Tigre ###
+
+Nouvelle approche pour diminuer le surapprentissage : l'augmentation de données (ImageDataGenerator) Utilisation de la baseline améliorée.
+**Interprétation des résultats :** Nous pouvons voir que le modèle ImageDataGenerator est plus performant que le modèle améliorée et la baseline de base. On retrouve des résultats proches à la baseline améliorée. Néanmoins le surapprentissage est moins important.
+On peut en conclure qu'il est important d'analyser ces différents facteurs pour comprendre pourquoi un modèle performe mieux ou moins bien dans une tâche de classification. 
+
+
 ### Modèle Renard ###
+
+Nous avons créé successivement cinq, puis dix,  puis vingt fois photos par image. Nous avons observé que plus le nombre d'images augmentait, meilleures étaient les performances du modèle, ce qui pour l'instant est logique (voir figure \ref{compar_fox}). Il est important de préciser que les 3 modèles améliorés ont une couche de dropout.
+
+Il semble que le modèle ait montré des signes de surapprentissage ( fort sur la photo a de la figure \ref{compar_fox} et léger pour la photo b) sur les données générées bien que nous ayons mis en place du drop out. 
+
+**Explication plausible au surapprentissage :** Cela est probablement dû au fait que les données introduites sont similaires à celles d'origine et présente peu différences.
+
+
 
 ## Transfer Learning ##
+
+Pour le transfer learning, nous avons testé plusieurs modèles entraînés que proposent Keras correspondant à des CNN.
+Le transfer learning est une technique d'apprentissage dans laquelle un modèle développé pour une tâche particulière est réutilisé comme point de départ pour un modèle sur une deuxième tâche.
+
+Voici les modèles que proposent Keras :
+   -   VG16
+   -   VGG19
+   -   Resnet
+   -   ResnetV2
+   -   MobileNet
+   -   MobileNetV2
+
 ### Modèle Éléphant ###
+
+Le tableau récapitule les différents modèles utilisés pour le transfer learning. En utilisant les données générées on se retrouve avec le même problème d'underfitting pour 300 epochs (même en augmentant le learning rate), il faudrait sans doute augmenter le nombre d'epochs si on voulait vraiment étudier avec les données générées. 
+
+
+
 ### Modèle Tigre ###
+Les hyperparamètres sont les suivants : Compilateur Adam et learning rate à 0,001.
+
+
 ### Modèle Renard ###
+Sur la figure 7, nous affichons un récapitulatif des différents résultats que nous obtenons en utilisant les différent modèles de transfert learning.
+
+Nous pouvons ainsi déduire à partir de ces test que le modèles qui convient le plus a notre situation est le VGG19.
+
+**Interprétation des résultats :** les courbes de loss convergent vers des valeurs basses, notamment une loss de validation qui se rapproche de 0, cela indique que le modèle apprend de manière approfondie sans présenter du surapprentissage. De plus, les courbes d'accuracy de validation et de test sont similaires et proches, cela suggère une bonne capacité de généralisation du modèle.
+
+
 
 ## Generative Adversarial Network fox ##
+Malgré un entraînement prolongé (5 500 epoch) du GAN sur le jeu de données renards (100 images), les résultats obtenus ne présentent pas une ressemblance satisfaisante avec des renards réels. Nous avons décidé de créer un jeu de données de renard avec des nouvelles données (104 images) possédant une meilleure représentation du renard (comparaison des exemples : c et d de la Figure). Cependant, même avec cet ensemble de données, les résultats du GAN n'ont pas réussi à générer des images ressemblant à des renards (image b de la Figure \ref{gan_result}). Il semble que malgré nos efforts pour diversifier et améliorer la qualité des données, les caractéristiques complexes des renards n'ont pas été correctement capturées par le GAN. 
+
+Malgré ces résultats, nous avons quand même souhaité tester ces images avec le meilleur modèle pour la détection de renards.
+
+
 ### Prédiction sur les sorties du GAN ###
+
+Après la génération de ces images, nous avons entrepris de les découper et de les redimensionner afin de les tester sur notre modèle. Une fois cette tâche accomplie, nous avons lancé le modèle sur ces images générées pour observer les résultats.
+**Interprétation des résultats :** Le modèles à correctement classé la dernières images du GAN.
+
 ## Modèle le plus complexe : contenu des sorties des CNN ##
 ## Conclusion ##
 Ce projet met en évidence les défis liés à la capacité de nos modèles à bien se généraliser. Nous avons eu des difficultés à obtenir des résultats satisfaisants et à assurer une bonne généralisation de nos modèles.
