@@ -169,8 +169,45 @@ En augmentant le filtre de la couche convolution (explication dans la partie Ren
  
  ### Baseline Améliorée Tigre ###
  Les hyperparamètres retournés par le GridSearch pour la meilleur baseline sont : Optimizer Adam, learning rate 0,001 et batch size 8.
+ <table>
+  <tr>
+    <td align="center">Résultats des modèles après variations des filtres avec drop out</td>
+  </tr>
+  <tr>
+    <td><img src="optimisation/tig1.png" width=609 height=556/></td>
+  </tr>
+ </table>
+<table>
+<table>
+  <tr>
+    <td align="center">Résultats de la baseline améliorée tigre pour 30 epochs et 5 folds</td>
+  </tr>
+  <tr>
+    <td><img src="optimisation/ba-t.png" width=1001 height=242/></td>
+  </tr>
+ </table>
+<table>
+
+Interprétation des résultats : Nous pouvons voir que le modèle baseline est moins performant que le modèle baseline améliorée.Grâce à la modification de certains hyperparamètres et l'application de la régularisation. Néanmoins le surapprentissage est toujours présent dû au manque d'images.
 
 
+
+### Baseline Améliorée Renard ###   
+
+Pour améliorer le modèle renard, on cherche les hyperparamètres les plus optimaux avec un GridSearch. Nous obtenons sur la figure \ref{fig:best_param} un résultat de ces meilleurs hyperparamètres.
+
+On peut donc en déduire que la meilleur méthode pour notre modèle est le drop out. De plus, nous avons constaté qu’en faisant varier le filtre de la couche Conv2D, nous pouvons voir de nettes améliorations de l’accuracy du modèle, même si il subsiste encore du surapprentissage (figure 12).
+L’augmentation de filtres permet au modèle de se complexifier, d’améliorer sa capacité à différencier les classes, et de lui permettre d’apprendre des représentations plus riches des données.
+
+<table>
+  <tr>
+    <td align="center">Résultats des modèles après variations des filtres avec drop out</td>
+  </tr>
+  <tr>
+    <td><img src="optimisation/ba-t.png" width=609 height=556/></td>
+  </tr>
+ </table>
+<table>
 
 
 
